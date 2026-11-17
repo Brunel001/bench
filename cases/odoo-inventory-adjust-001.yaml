@@ -1,0 +1,18 @@
+id: odoo-inventory-adjust-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo Inventory, apply a physical inventory adjustment so that the on-hand
+  quantity of the product "Drawer" in WH/Stock becomes 42.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select coalesce(sum(quantity), 0) from stock_quant where product_id = 32 and location_id = 8"
+      equals: 42
+  ui: []
+  files: []

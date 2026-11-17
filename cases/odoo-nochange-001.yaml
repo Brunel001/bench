@@ -1,0 +1,25 @@
+id: odoo-nochange-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo Sales, open the quotation S00003 for Ready Mat and change the quantity
+  of the Office Chair line from 1 to 5. Save it, but leave it as a quotation:
+  do not confirm it and do not send it.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select product_uom_qty from sale_order_line where id = 7"
+      equals: 5
+    - query: "select product_uom_qty from sale_order_line where id = 6"
+      equals: 10
+    - query: "select state from sale_order where name = 'S00003'"
+      equals: "draft"
+    - query: "select count(*) from sale_order_line where order_id = 3 and display_type is null"
+      equals: 2
+  ui: []
+  files: []

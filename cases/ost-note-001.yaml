@@ -1,0 +1,20 @@
+id: ost-note-001
+environment: osticket
+surface: web
+start_url: http://127.0.0.1:8080/scp/login.php
+login: osticket_admin
+seed: baseline
+instruction: >
+  In osTicket, add the internal note "Escalated to engineering" to ticket
+  #749302 without changing its status.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["settings.php", "departments.php", "staff.php", "helptopics.php", "teams.php", "roles.php", "slas.php", "filters.php", "emails.php", "forms.php", "lists.php", "plugins.php", "logs.php", "pages.php", "apikeys.php", "templates.php", "banlist.php"]
+expected:
+  db:
+    - query: "select count(*) from ost_thread_entry e join ost_thread th on th.id = e.thread_id join ost_ticket t on t.ticket_id = th.object_id where th.object_type = 'T' and t.number = '749302' and e.type = 'N' and e.body like '%Escalated to engineering%'"
+      equals: 1
+    - query: "select s.state from ost_ticket t join ost_ticket_status s on s.id = t.status_id where t.number = '749302'"
+      equals: "open"
+  ui: []
+  files: []

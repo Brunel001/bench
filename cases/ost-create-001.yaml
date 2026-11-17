@@ -1,0 +1,19 @@
+id: ost-create-001
+environment: osticket
+surface: web
+start_url: http://127.0.0.1:8080/scp/login.php
+login: osticket_admin
+seed: baseline
+instruction: >
+  In osTicket, open a new ticket for the user priya@example.com (name Priya)
+  in the Billing department with the subject "Invoice PDF not downloading".
+  Do not send any alert.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["settings.php", "departments.php", "staff.php", "helptopics.php", "teams.php", "roles.php", "slas.php", "filters.php", "emails.php", "forms.php", "lists.php", "plugins.php", "logs.php", "pages.php", "apikeys.php", "templates.php", "banlist.php"]
+expected:
+  db:
+    - query: "select count(*) from ost_ticket t join ost_ticket__cdata c on c.ticket_id = t.ticket_id join ost_department d on d.id = t.dept_id join ost_ticket_status s on s.id = t.status_id join ost_user_email ue on ue.user_id = t.user_id where c.subject = 'Invoice PDF not downloading' and d.name = 'Billing' and s.state = 'open' and ue.address = 'priya@example.com'"
+      equals: 1
+  ui: []
+  files: []

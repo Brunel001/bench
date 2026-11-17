@@ -1,0 +1,17 @@
+id: ost-priority-001
+environment: osticket
+surface: web
+start_url: http://127.0.0.1:8080/scp/login.php
+login: osticket_admin
+seed: baseline
+instruction: >
+  In osTicket, set the priority of ticket #159348 to High.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["settings.php", "departments.php", "staff.php", "helptopics.php", "teams.php", "roles.php", "slas.php", "filters.php", "emails.php", "forms.php", "lists.php", "plugins.php", "logs.php", "pages.php", "apikeys.php", "templates.php", "banlist.php"]
+expected:
+  db:
+    - query: "select p.priority from ost_ticket t join ost_ticket__cdata c on c.ticket_id = t.ticket_id join ost_ticket_priority p on p.priority_id = c.priority where t.number = '159348'"
+      equals: "high"
+  ui: []
+  files: []

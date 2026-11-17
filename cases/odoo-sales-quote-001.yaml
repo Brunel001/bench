@@ -1,0 +1,23 @@
+id: odoo-sales-quote-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo Sales, create a quotation for the customer Gemini Furniture with one
+  Office Chair and one Office Lamp, set the Customer Reference to BENCH-SQ-001,
+  and confirm it as a sales order.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select state from sale_order where client_order_ref = 'BENCH-SQ-001'"
+      equals: "sale"
+    - query: "select partner_id from sale_order where client_order_ref = 'BENCH-SQ-001'"
+      equals: 11
+    - query: "select count(*) from sale_order_line l join sale_order o on o.id = l.order_id where o.client_order_ref = 'BENCH-SQ-001' and l.display_type is null"
+      equals: 2
+  ui: []
+  files: []

@@ -1,0 +1,19 @@
+id: odoo-inventory-receive-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo, receive purchase order P00011 in full and validate the receipt.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select state from stock_picking where name = 'WH/IN/00006'"
+      equals: "done"
+    - query: "select coalesce(sum(m.quantity), 0) from stock_move m join stock_picking p on p.id = m.picking_id where p.name = 'WH/IN/00006' and m.state = 'done'"
+      equals: 20
+  ui: []
+  files: []

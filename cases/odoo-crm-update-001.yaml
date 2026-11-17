@@ -1,0 +1,20 @@
+id: odoo-crm-update-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo CRM, open the opportunity "Info about services", set its expected
+  revenue to 50,000 and move it to the Proposition stage.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select expected_revenue from crm_lead where id = 15"
+      equals: 50000
+    - query: "select stage_id from crm_lead where id = 15"
+      equals: 3
+  ui: []
+  files: []

@@ -1,0 +1,306 @@
+{
+  "title": "AI agents on Odoo and osTicket: first results",
+  "date": "2026-11-17",
+  "agents": [
+    {
+      "name": "Claude Sonnet 5.5",
+      "pattern": "runs/2026*-claude",
+      "runs": 85,
+      "cases": 17,
+      "k": 5,
+      "pass_at_1": 1.0,
+      "runs_passed": 85,
+      "pass_hat_k": 1.0,
+      "cases_all_pass": 17,
+      "pass_hat_k_interval": [
+        0.8156763396284354,
+        1.0
+      ],
+      "false_successes": 0,
+      "avg_usd_per_run": 0.0432,
+      "avg_seconds_per_run": 41.7,
+      "per_case": {
+        "ost-create-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 27.6,
+          "avg_usd": 0.0944,
+          "failure_reasons": {}
+        },
+        "ost-create-002": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 27.8,
+          "avg_usd": 0.0974,
+          "failure_reasons": {}
+        },
+        "ost-assign-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 6.0,
+          "avg_usd": 0.0161,
+          "failure_reasons": {}
+        },
+        "ost-priority-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 5.0,
+          "avg_usd": 0.0215,
+          "failure_reasons": {}
+        },
+        "ost-reply-close-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 8.0,
+          "avg_usd": 0.0329,
+          "failure_reasons": {}
+        },
+        "ost-note-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 5.2,
+          "avg_usd": 0.0167,
+          "failure_reasons": {}
+        },
+        "odoo-crm-update-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 7.2,
+          "avg_usd": 0.0265,
+          "failure_reasons": {}
+        },
+        "odoo-inventory-adjust-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 12.0,
+          "avg_usd": 0.0439,
+          "failure_reasons": {}
+        },
+        "odoo-inventory-receive-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 5.0,
+          "avg_usd": 0.0236,
+          "failure_reasons": {}
+        },
+        "odoo-project-task-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 11.0,
+          "avg_usd": 0.048,
+          "failure_reasons": {}
+        },
+        "odoo-sales-quote-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 21.0,
+          "avg_usd": 0.0775,
+          "failure_reasons": {}
+        },
+        "odoo-lookalike-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 11.0,
+          "avg_usd": 0.0448,
+          "failure_reasons": {}
+        },
+        "odoo-hidden-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 7.0,
+          "avg_usd": 0.0288,
+          "failure_reasons": {}
+        },
+        "odoo-date-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 11.4,
+          "avg_usd": 0.0451,
+          "failure_reasons": {}
+        },
+        "odoo-partial-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 9.6,
+          "avg_usd": 0.0367,
+          "failure_reasons": {}
+        },
+        "odoo-nochange-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 7.8,
+          "avg_usd": 0.0261,
+          "failure_reasons": {}
+        },
+        "odoo-project-task-002": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 11.0,
+          "avg_usd": 0.0553,
+          "failure_reasons": {}
+        }
+      }
+    },
+    {
+      "name": "Claude Haiku 5.5",
+      "pattern": "runs/2026*-claude-haiku",
+      "runs": 85,
+      "cases": 17,
+      "k": 5,
+      "pass_at_1": 0.9176470588235294,
+      "runs_passed": 78,
+      "pass_hat_k": 0.8823529411764706,
+      "cases_all_pass": 15,
+      "pass_hat_k_interval": [
+        0.6566315750229009,
+        0.967120919987079
+      ],
+      "false_successes": 7,
+      "avg_usd_per_run": 0.0029,
+      "avg_seconds_per_run": 45.5,
+      "per_case": {
+        "ost-create-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 29.0,
+          "avg_usd": 0.0063,
+          "failure_reasons": {}
+        },
+        "ost-create-002": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 27.8,
+          "avg_usd": 0.0055,
+          "failure_reasons": {}
+        },
+        "ost-assign-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 6.0,
+          "avg_usd": 0.0018,
+          "failure_reasons": {}
+        },
+        "ost-priority-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 6.6,
+          "avg_usd": 0.0018,
+          "failure_reasons": {}
+        },
+        "ost-reply-close-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 8.2,
+          "avg_usd": 0.002,
+          "failure_reasons": {}
+        },
+        "ost-note-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 5.0,
+          "avg_usd": 0.0012,
+          "failure_reasons": {}
+        },
+        "odoo-crm-update-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 7.4,
+          "avg_usd": 0.0017,
+          "failure_reasons": {}
+        },
+        "odoo-inventory-adjust-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 12.4,
+          "avg_usd": 0.0028,
+          "failure_reasons": {}
+        },
+        "odoo-inventory-receive-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 6.8,
+          "avg_usd": 0.0017,
+          "failure_reasons": {}
+        },
+        "odoo-project-task-001": {
+          "passes": 1,
+          "k": 5,
+          "avg_actions": 11.4,
+          "avg_usd": 0.0031,
+          "failure_reasons": {
+            "wrong_end_state": 4
+          }
+        },
+        "odoo-sales-quote-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 20.6,
+          "avg_usd": 0.0044,
+          "failure_reasons": {}
+        },
+        "odoo-lookalike-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 13.0,
+          "avg_usd": 0.0028,
+          "failure_reasons": {}
+        },
+        "odoo-hidden-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 8.0,
+          "avg_usd": 0.0017,
+          "failure_reasons": {}
+        },
+        "odoo-date-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 17.2,
+          "avg_usd": 0.0043,
+          "failure_reasons": {}
+        },
+        "odoo-partial-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 14.0,
+          "avg_usd": 0.0034,
+          "failure_reasons": {}
+        },
+        "odoo-nochange-001": {
+          "passes": 5,
+          "k": 5,
+          "avg_actions": 7.0,
+          "avg_usd": 0.0018,
+          "failure_reasons": {}
+        },
+        "odoo-project-task-002": {
+          "passes": 2,
+          "k": 5,
+          "avg_actions": 11.0,
+          "avg_usd": 0.003,
+          "failure_reasons": {
+            "wrong_end_state": 3
+          }
+        }
+      }
+    }
+  ],
+  "human_actions": {
+    "ost-create-001": 16,
+    "ost-create-002": 16,
+    "ost-assign-001": 6,
+    "ost-priority-001": 5,
+    "ost-reply-close-001": 6,
+    "ost-note-001": 8,
+    "odoo-crm-update-001": 7,
+    "odoo-inventory-adjust-001": 10,
+    "odoo-inventory-receive-001": 5,
+    "odoo-project-task-001": 10,
+    "odoo-sales-quote-001": 16,
+    "odoo-lookalike-001": 10,
+    "odoo-hidden-001": 6,
+    "odoo-date-001": 10,
+    "odoo-partial-001": 9,
+    "odoo-nochange-001": 7
+  }
+}

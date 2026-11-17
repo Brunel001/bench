@@ -1,0 +1,22 @@
+id: odoo-hidden-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo Sales, confirm the quotation S00001 for Acme Corporation as a sales
+  order. Do not change any other quotation.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select state from sale_order where name = 'S00001'"
+      equals: "sale"
+    - query: "select state from sale_order where name = 'S00005'"
+      equals: "draft"
+    - query: "select count(*) from sale_order where state in ('draft', 'sent')"
+      equals: 4
+  ui: []
+  files: []

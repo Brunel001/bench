@@ -1,0 +1,21 @@
+id: odoo-lookalike-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo Inventory, set the counted quantity of the product Customizable Desk
+  (Aluminium, White) in WH/Stock to 30 and apply it. Do not change any other
+  variant of the desk.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select sum(quantity) from stock_quant where product_id = 14 and location_id = 8"
+      equals: 30
+    - query: "select sum(quantity) from stock_quant where product_id in (12, 13, 37, 38) and location_id = 8"
+      equals: 230
+  ui: []
+  files: []

@@ -1,0 +1,24 @@
+id: odoo-partial-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo, open purchase order P00011 and receive only 12 of the 20 Acoustic
+  Bloc Screens. Validate the receipt and keep the remaining 8 as a backorder.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select state from stock_picking where name = 'WH/IN/00006'"
+      equals: "done"
+    - query: "select sum(quantity) from stock_move where picking_id = (select id from stock_picking where name = 'WH/IN/00006')"
+      equals: 12
+    - query: "select count(*) from stock_picking where backorder_id = (select id from stock_picking where name = 'WH/IN/00006')"
+      equals: 1
+    - query: "select sum(sm.product_uom_qty) from stock_move sm join stock_picking sp on sp.id = sm.picking_id where sp.backorder_id = (select id from stock_picking where name = 'WH/IN/00006')"
+      equals: 8
+  ui: []
+  files: []

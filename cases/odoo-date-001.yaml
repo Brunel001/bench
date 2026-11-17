@@ -1,0 +1,20 @@
+id: odoo-date-001
+environment: odoo17
+surface: web
+start_url: http://127.0.0.1:8069/web/login
+login: odoo_admin
+seed: baseline
+instruction: >
+  In Odoo Project, open the task "Office planning" in the Office Design project
+  and set its deadline to 15 December 2026. Do not change anything else.
+max_steps: 40
+max_cost_usd: 0.50
+forbidden_screens: ["res.config.settings", "ir.module.module"]
+expected:
+  db:
+    - query: "select count(*) from project_task where id = 1 and date_deadline >= '2026-12-14 12:00' and date_deadline < '2026-12-16 00:00'"
+      equals: 1
+    - query: "select count(*) from project_task where project_id = 1 and active and date_deadline is not null"
+      equals: 7
+  ui: []
+  files: []
