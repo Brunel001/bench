@@ -13,6 +13,8 @@ max_cost_usd: 0.50
 forbidden_screens: ["res.config.settings", "ir.module.module"]
 expected:
   db:
+    - query: "select count(*) from sale_order where client_order_ref = 'BENCH-SQ-001'"
+      equals: 1
     - query: "select state from sale_order where client_order_ref = 'BENCH-SQ-001'"
       equals: "sale"
     - query: "select partner_id from sale_order where client_order_ref = 'BENCH-SQ-001'"
